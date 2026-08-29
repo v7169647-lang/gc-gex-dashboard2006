@@ -1,0 +1,11 @@
+st.subheader("Column Names")
+
+st.write(df.columns.tolist())
+if uploaded_file:
+    df = pd.read_excel(uploaded_file)
+
+    st.subheader("Excel Data")
+    st.dataframe(df)
+
+    st.subheader("Column Names")
+    st.write(df.columns.tolist())
