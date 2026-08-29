@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import pandas as pd
 
 st.set_page_config(
     page_title="GC Gold GEX Dashboard",
@@ -28,6 +29,17 @@ try:
     )
 
     st.json(data)
+    
+uploaded_file = st.file_uploader(
+    "Upload VOI Excel",
+    type=["xls", "xlsx"]
+)
+
+if uploaded_file:
+    df = pd.read_excel(uploaded_file)
+
+    st.subheader("Excel Data")
+    st.dataframe(df)
 
 except Exception as e:
     st.error(f"Error: {e}")
